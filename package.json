@@ -43,7 +43,8 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "icon": "build/icons/icon.icns",
+      "target": "pkg"
     },
     "win": {
       "icon": "build/icons/icon.ico"
@@ -55,6 +56,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.15.6",
+    "multispinner": "^0.2.1",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
