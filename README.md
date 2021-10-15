@@ -8,6 +8,10 @@
 
 [SimulatedGREG/electron-vue](https://github.com/SimulatedGREG/electron-vue)
 
+[ElementUI](https://element.eleme.cn/#/zh-CN)
+
+[Vue.js2](https://cn.vuejs.org/v2/guide/index.html)
+
 ## 构建步骤
 
 ``` bash
@@ -36,7 +40,3 @@ yarn run lint
 
 5. http 请求可使用 axios 发起
 
-
-## 隐藏控制台
-
-默认情况下，启动的时候会显示控制台。开发
