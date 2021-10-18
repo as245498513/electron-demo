@@ -39,6 +39,11 @@
       <el-input v-model="dir" placeholder="请输入要创建的目录"></el-input>
       <el-button @click="createDir()">创建</el-button>
     </el-row>
+    <el-row>
+      <h3>3. Capture One 21 选中热文件夹 demo</h3>
+      <el-input v-model="hot_dir" placeholder="请输入要选择的的目录"></el-input>
+      <el-button @click="selectDir()">选择</el-button>
+    </el-row>
   </div>
 </template>
 
@@ -48,6 +53,7 @@ export default {
   data() {
     return {
       dir: '',
+      hot_dir: '',
       tableData: [{
         date: '2016-05-03',
         name: '王小虎',
@@ -104,6 +110,28 @@ export default {
 
       fs.mkdirSync(this.dir);
       this.$notify.success('创建目录成功！');
+    },
+    selectDir() {
+      const { execSync } = require('child_process');
+      const script = `
+      tell application "Capture One 21"
+\tactivate
+\ttell application "System Events"
+\t\ttell process "Capture One 21"
+\t\t\tclick menu item 3 of menu "相机" of menu bar 1
+\t\tend tell
+\tend tell
+\tactivate
+\ttell application "System Events"
+\t\tkey code 5 using {shift down, command down}
+\t\tkeystroke "${this.hot_dir}"
+\t\tkeystroke return
+\t\tdelay 1
+\t\tkeystroke return
+\tend tell
+end tell`;
+      const output = execSync(`osascript -e '${script}'`);
+      console.log(output);
     },
   },
 };
